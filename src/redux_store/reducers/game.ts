@@ -32,6 +32,8 @@ const gameReducer = createSlice({
 export const { } = gameReducer.actions;
 export default gameReducer.reducer;
 
+
+// fetching pokemons data
 export const fetchPokemonData = createAsyncThunk(
     "game/fetchPokemonData",
     async () => {
