@@ -22,6 +22,9 @@ export const SHADOW = {
     elevation: 24,
 };
 
+//url
+export const GET_ALL_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon';
+
 // screen
 export const WIDTH_SCREEN: number = Dimensions.get('window').width;
 export const HEIGHT_SCREEN: number = Dimensions.get('window').height;
