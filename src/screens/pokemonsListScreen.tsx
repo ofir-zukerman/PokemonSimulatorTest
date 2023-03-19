@@ -12,7 +12,6 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
 type TStackPropsList = NativeStackScreenProps<RootStackParamList, 'PokemonsList'>;
 
-
 const PokemonsListScreen = ({ navigation: { navigate } }: TStackPropsList) => {
     const initialPokemons = useAppSelector((state) => state.game.initialPokemons);
 
@@ -75,7 +74,7 @@ const PokemonsListScreen = ({ navigation: { navigate } }: TStackPropsList) => {
                                 {item.name}
                             </TextCmp>
                             <Image
-                                source={{ uri: item.sprites.front_shiny }}
+                                source={{ uri: item.sprites.front_default }}
                                 style={{ width: 125, height: 125 }}
                             />
                         </TouchableOpacity>

@@ -3,12 +3,21 @@ import axios from 'axios';
 import { GET_ALL_POKEMONS_URL } from '../../constants/constants';
 import { IPokemons } from './types';
 
+export interface IPokemon {
+    sprites: {
+        back_default: string;
+        front_default: string;
+    };
+    id: number;
+    name: string;
+}
+
 interface IInitialValues {
-    pokemons: any[];
-    initialPokemons: any[];
+    pokemons: IPokemon[];
+    initialPokemons: IPokemon[];
     isLoading: boolean;
-    pokemon1: any;
-    pokemon2: any;
+    pokemon1: IPokemon | null;
+    pokemon2: IPokemon | null;
 };
 
 const initialState: IInitialValues = {
@@ -23,7 +32,7 @@ const gameReducer = createSlice({
     name: 'gameReducer',
     initialState,
     reducers: {
-        setPokemons: (state, actions: PayloadAction<IPokemons[]>) => {
+        setPokemons: (state, actions: PayloadAction<IPokemon[]>) => {
             const { payload } = actions;
             state.pokemons = payload;
         },

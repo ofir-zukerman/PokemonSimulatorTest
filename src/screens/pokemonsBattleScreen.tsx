@@ -11,8 +11,8 @@ const PokemonsBattleScreen = ({ navigation: { navigate } }: TStackPropsBattle) =
     const pokemons = useAppSelector((state) => state.game.pokemons);
 
     const [pokemonHP, setPokemonHP] = useState({
-        firstPokemon: 10,
-        secondPokemon: 10
+        firstPokemon: 100,
+        secondPokemon: 100
     })
 
     const [isPokemonAttack, setIsPokemonAttack] = useState({
@@ -97,7 +97,7 @@ const PokemonsBattleScreen = ({ navigation: { navigate } }: TStackPropsBattle) =
             <View style={{ alignItems: 'flex-end', flex: 1, justifyContent: 'space-around' }}>
                 <Pokemon
                     name={pokemons[0].name}
-                    imageUri={pokemons[0].sprites.front_shiny}
+                    imageUri={pokemons[0].sprites.front_default}
                     hp={pokemonHP.firstPokemon}
                     secondPokemonHP={pokemonHP.secondPokemon}
                     onAttack={onAttack}
