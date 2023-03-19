@@ -82,7 +82,7 @@ const PokemonsListScreen = ({ navigation: { navigate } }: TStackPropsList) => {
                 }}
                 key={'_'}
                 keyExtractor={item => "_" + item.id}
-                numColumns={3}
+                numColumns={2}
                 bounces={false}
                 alwaysBounceVertical={false}
                 showsVerticalScrollIndicator={false}
@@ -100,6 +100,7 @@ const styles = StyleSheet.create({
     },
     flatListContainer: {
         width: WIDTH_SCREEN,
+        alignItems: 'center'
     },
     pokemonContainer: {
         alignItems: 'center',
