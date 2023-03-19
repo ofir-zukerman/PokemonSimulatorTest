@@ -23,7 +23,7 @@ export const SHADOW = {
 };
 
 //url
-export const GET_ALL_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon';
+export const GET_ALL_POKEMONS_URL = 'https://pokeapi.co/api/v2/pokemon?limit=100';
 
 // screen
 export const WIDTH_SCREEN: number = Dimensions.get('window').width;
