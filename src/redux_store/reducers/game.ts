@@ -5,10 +5,12 @@ import { IPokemons } from './types';
 
 interface IInitialValues {
     isLoading: boolean;
+    initialPokemons: any[];
 }
 
 const initialState: IInitialValues = {
-    isLoading: false
+    isLoading: false,
+    initialPokemons: []
 };
 
 const gameReducer = createSlice({
@@ -21,6 +23,7 @@ const gameReducer = createSlice({
                 state.isLoading = true
             })
             .addCase(fetchPokemonData.fulfilled, (state, action) => {
+                state.initialPokemons = action.payload;
                 state.isLoading = false;
             })
             .addCase(fetchPokemonData.rejected, (state, action) => {
