@@ -6,10 +6,9 @@ import Loader from '../components/loader.cmp';
 import { createStackNavigator } from '@react-navigation/stack';
 import PokemonsListScreen from '../screens/pokemonsListScreen';
 import PokemonsBattleScreen from '../screens/pokemonsBattleScreen';
-import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import ModalCmp from '../components/moda.cmp';
 
-type RootStackParamList = {
+export type RootStackParamList = {
     PokemonsList: undefined;
     PokemonsBattle: undefined;
     ModalScreen: {
@@ -19,10 +18,7 @@ type RootStackParamList = {
     };
 };
 
-export type TStackProps = NativeStackScreenProps<RootStackParamList, 'PokemonsList', 'PokemonsBattle'>;
-
 const Stack = createStackNavigator<RootStackParamList>();
-
 
 const routes = () => {
     const dispatch = useAppDispatch();
@@ -38,7 +34,11 @@ const routes = () => {
 
     return (
         <Stack.Navigator>
-            <Stack.Screen name="PokemonsList" component={PokemonsListScreen} options={{ headerTitle: 'Pokemons List' }} />
+            <Stack.Screen
+                name="PokemonsList"
+                component={PokemonsListScreen}
+                options={{ headerTitle: 'Pokemons List' }}
+            />
             <Stack.Screen
                 name="PokemonsBattle"
                 component={PokemonsBattleScreen}

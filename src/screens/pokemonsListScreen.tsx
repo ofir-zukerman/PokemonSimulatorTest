@@ -1,6 +1,6 @@
 import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-native'
 import React, { useMemo, useState } from 'react'
-import { TStackProps } from '../routes/routes';
+import { RootStackParamList } from '../routes/routes';
 import { TextCmp } from '../components';
 import { TextType } from '../components/text.cmp';
 import { useAppDispatch, useAppSelector } from '../redux_store/actions/actions';
@@ -8,8 +8,12 @@ import { colors, WIDTH_SCREEN } from '../constants/constants';
 import SelectedPokemons from '../components/SelectedPokemons';
 import TextInputCmp from '../components/textInput.cmp';
 import { setPokemons } from '../redux_store/reducers/game';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const PokemonsListScreen = ({ navigation: { navigate } }: TStackProps) => {
+type TStackPropsList = NativeStackScreenProps<RootStackParamList, 'PokemonsList'>;
+
+
+const PokemonsListScreen = ({ navigation: { navigate } }: TStackPropsList) => {
     const initialPokemons = useAppSelector((state) => state.game.initialPokemons);
 
     const dispatch = useAppDispatch();

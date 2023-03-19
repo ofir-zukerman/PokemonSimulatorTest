@@ -1,10 +1,13 @@
 import { StyleSheet, View } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { TStackProps } from '../routes/routes';
+import { RootStackParamList } from '../routes/routes';
 import { useAppSelector } from '../redux_store/actions/actions';
 import Pokemon from '../components/pokemon';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
 
-const PokemonsBattleScreen = ({ navigation: { navigate } }: TStackProps) => {
+type TStackPropsBattle = NativeStackScreenProps<RootStackParamList, 'PokemonsBattle'>;
+
+const PokemonsBattleScreen = ({ navigation: { navigate } }: TStackPropsBattle) => {
     const pokemons = useAppSelector((state) => state.game.pokemons);
 
     const [pokemonHP, setPokemonHP] = useState({

@@ -2,12 +2,12 @@ import React from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  View,
 } from 'react-native';
 import { store } from './src/redux_store/store/store';
 import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { LogBox } from 'react-native';
+import Routes from './src/routes/routes';
 
 if (__DEV__) {
   import('./src/utils/reactotronConfig').then(() => console.log('Reactotron is available'))
@@ -21,7 +21,7 @@ const App = (): JSX.Element => {
     <SafeAreaView style={styles.safeAreaContainer}>
       <Provider {...{ store }}>
         <NavigationContainer>
-          <View />
+          <Routes />
         </NavigationContainer>
       </Provider>
     </SafeAreaView>

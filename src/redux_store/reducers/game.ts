@@ -9,7 +9,7 @@ interface IInitialValues {
     isLoading: boolean;
     pokemon1: any;
     pokemon2: any;
-}
+};
 
 const initialState: IInitialValues = {
     pokemons: [],
@@ -59,14 +59,10 @@ export const fetchPokemonData = createAsyncThunk(
         if (pokemons?.length) {
             const requests = pokemons.map(pokemon => axios.get(pokemon.url));
             const results = await Promise.all(requests);
-            const pokemonsData = results.map((pokemon, index) => {
-                const pokemonData = {
-                    ...pokemon.data,
-                }
-                return pokemonData
+            return results.map((pokemon, index) => {
+                return pokemon.data
             })
-            return pokemonsData;
-        }
+        };
         return [];
     }
 );

@@ -1,12 +1,15 @@
-import React, { useState } from 'react';
-import { StyleSheet, TouchableOpacity, View } from 'react-native';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import React from 'react';
+import { StyleSheet, View } from 'react-native';
 import { useAppDispatch, useAppSelector } from '../redux_store/actions/actions';
 import { setPokemons } from '../redux_store/reducers/game';
-import { TStackProps } from '../routes/routes';
+import { RootStackParamList } from '../routes/routes';
 import ButtonCmp from './button.cmp';
 import TextCmp, { TextType } from './text.cmp';
 
-const ModalCmp = ({ navigation: { navigate }, route }: any) => {
+type TStackPropsModal = NativeStackScreenProps<RootStackParamList, 'ModalScreen'>;
+
+const ModalCmp = ({ navigation: { navigate }, route }: TStackPropsModal) => {
     const { win, title, pokemon } = route.params;
 
     const dispatch = useAppDispatch();

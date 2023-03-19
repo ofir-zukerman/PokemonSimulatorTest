@@ -8,7 +8,7 @@ const Loader = () => {
             <LottieView
                 autoPlay
                 style={styles.lottieSize}
-                source={require('../assets/lottie/Pokeball_Loader.json')}
+                source={require('../assets/Pokeball_Loader.json')}
             />
         </View>
     )
