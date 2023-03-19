@@ -1,22 +1,37 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { GET_ALL_POKEMONS_URL } from '../../constants/constants';
 import { IPokemons } from './types';
 
 interface IInitialValues {
-    isLoading: boolean;
+    pokemons: any[];
     initialPokemons: any[];
+    isLoading: boolean;
+    pokemon1: any;
+    pokemon2: any;
 }
 
 const initialState: IInitialValues = {
-    isLoading: false,
-    initialPokemons: []
+    pokemons: [],
+    initialPokemons: [],
+    isLoading: true,
+    pokemon1: null,
+    pokemon2: null,
 };
 
 const gameReducer = createSlice({
     name: 'gameReducer',
     initialState,
-    reducers: {},
+    reducers: {
+        setPokemons: (state, actions: PayloadAction<IPokemons[]>) => {
+            const { payload } = actions;
+            state.pokemons = payload;
+        },
+        setIsLoading: (state, actions: PayloadAction<boolean>) => {
+            const { payload } = actions;
+            state.isLoading = payload;
+        },
+    },
     extraReducers: (builder) => {
         builder
             .addCase(fetchPokemonData.pending, (state, action) => {
@@ -32,11 +47,9 @@ const gameReducer = createSlice({
     }
 });
 
-export const { } = gameReducer.actions;
+export const { setPokemons } = gameReducer.actions;
 export default gameReducer.reducer;
 
-
-// fetching pokemons data
 export const fetchPokemonData = createAsyncThunk(
     "game/fetchPokemonData",
     async () => {
@@ -46,7 +59,7 @@ export const fetchPokemonData = createAsyncThunk(
         if (pokemons?.length) {
             const requests = pokemons.map(pokemon => axios.get(pokemon.url));
             const results = await Promise.all(requests);
-            const pokemonsData = results.map((pokemon) => {
+            const pokemonsData = results.map((pokemon, index) => {
                 const pokemonData = {
                     ...pokemon.data,
                 }
